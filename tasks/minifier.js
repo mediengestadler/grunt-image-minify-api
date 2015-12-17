@@ -9,7 +9,7 @@ module.exports = function(grunt) {
             files   = this.filesSrc,
             options = this.options({
                 api_key: '',
-                api_host: 'http://image-minify.kundenlabor.de'
+                api_host: ''
             });
 
         if (options.apiKey === '') {
