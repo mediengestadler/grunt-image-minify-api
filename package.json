@@ -1,0 +1,41 @@
+{
+  "name": "ImageMinifier",
+  "description": "Image Minifier Grunt Task for https://github.com/ingowalther/image-minify-api",
+  "keywords": [
+    "grunt",
+    "task",
+    "image",
+    "minfiy",
+    "jpg",
+    "png",
+    "svg",
+  ],
+  "authors": [
+    {
+      "name": "YS",
+      "email": "ys@electronic-minds.de"
+    }, {
+      "name": "IW",
+      "email": "iw@electronic-minds.de"
+    }
+  ],
+  "version": "0.0.1",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "dependencies": {
+    "load-grunt-tasks": "~2.0.0",
+    "request": "~2.67.0"
+  },
+   "engines": {
+    "node": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yannicstadler/image-minify-api-grunt-task.git"
+  }
+}
+
