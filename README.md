@@ -31,13 +31,13 @@ module.exports = function (grunt) {
 
         minifier: {
             options: {
-                api_key: 'Cz0xO6vuVYgNZhYlKPtLXS1X5rk83CTF',
-                api_host: 'http://image-minify.kundenlabor.de'
+                api_key: 'YOUR_API_KEY',
+                api_host: 'YOUR_API_HOST'
             },
             build: {
                 cwd: 'images/foo/',
                 src: ['bar/*.jpg', 'bar/**/*.jpg'],
-                dest: 'compressed/'
+                dest: 'dist/'
             }
         }
     });
