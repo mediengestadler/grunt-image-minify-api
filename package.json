@@ -1,5 +1,5 @@
 {
-  "name": "ImageMinifier",
+  "name": "grunt-image-minify-api",
   "description": "Image Minifier Grunt Task for https://github.com/ingowalther/image-minify-api",
   "keywords": [
     "grunt",
@@ -27,7 +27,7 @@
     }
   ],
   "dependencies": {
-    "load-grunt-tasks": "~2.0.0",
+    "chalk": "^0.5.1",
     "request": "~2.67.0"
   },
    "engines": {
@@ -38,4 +38,3 @@
     "url": "git@github.com:yannicstadler/image-minify-api-grunt-task.git"
   }
 }
-
