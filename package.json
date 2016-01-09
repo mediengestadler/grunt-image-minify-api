@@ -19,7 +19,7 @@
       "email": "ingowalther@iwebspace.net"
     }
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "licenses": [
     {
       "type": "MIT",
@@ -35,6 +35,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:yannicstadler/image-minify-api-grunt-task.git"
+    "url": "git@github.com:yannicstadler/grunt-image-minify-api.git"
   }
 }
