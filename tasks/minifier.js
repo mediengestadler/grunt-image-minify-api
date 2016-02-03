@@ -1,14 +1,13 @@
 module.exports = function(grunt) {
     grunt.registerMultiTask('minifier', 'Minifiy images', function() {
-        var chalk   = require('chalk'),
+        var chalk = require('chalk'),
             request = require('request'),
-            fs      = require('fs'),
-
-            done    = this.async(),
-
-            _this   = this,
-            _       = grunt.util._,
-            cwd     = this.files[0].cwd || '',
+            fs = require('fs'),
+            done = this.async(),
+            _this = this,
+            max = this.filesSrc.length,
+            current = 0,
+            cwd = this.files[0].cwd || '',
             options = this.options({
                 api_key: '',
                 api_host: ''
@@ -23,9 +22,9 @@ module.exports = function(grunt) {
         }
 
         var isDone = function (file) {
-                // count array up or splice
+                counter++;
 
-                if (_.last(this.filesSrc) === file) {
+                if (max === current) {
                     done();
                 }
             },
