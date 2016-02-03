@@ -1,12 +1,14 @@
 module.exports = function(grunt) {
-    grunt.registerMultiTask('minifier', function() {
-        var _this = this,
-            done    = this.async(),
+    grunt.registerMultiTask('minifier', 'Minifiy images', function() {
+        var chalk   = require('chalk'),
             request = require('request'),
             fs      = require('fs'),
+
+            done    = this.async(),
+
+            _this   = this,
             _       = grunt.util._,
-            path    = require('path'),
-            files   = this.filesSrc,
+            cwd     = this.files[0].cwd || '',
             options = this.options({
                 api_key: '',
                 api_host: ''
@@ -21,11 +23,12 @@ module.exports = function(grunt) {
         }
 
         var isDone = function (file) {
-                if (_.last(files) === file) {
+                // count array up or splice
+
+                if (_.last(this.filesSrc) === file) {
                     done();
                 }
             },
-
             onError = function (file, message) {
                 var image = fs.createReadStream(file);
                 var writable = fs.createWriteStream(_this.files.dest + file);
@@ -40,16 +43,21 @@ module.exports = function(grunt) {
                 grunt.log.writeln(file + ': ' + message + ' - Original image was copied');
             };
 
-        _.each(files, function (file) {
+        this.files.forEach(function (file) {
+            var sendfile = cwd + file.src;
+
             // api
             request.post({
                 url: options.api_host + '/minify',
                 formData: {
                     api_key: options.api_key,
-                    image: fs.createReadStream(file)
+                    image: fs.createReadStream(sendfile)
                 }
             }, function (err, httpResponse, res) {
-                res = JSON.parse(res);
+                // conv json
+                if (typeof(res) === 'string') {
+                    res = JSON.parse(res);
+                }
 
                 // fail
                 if (res.success === false) {
@@ -71,14 +79,10 @@ module.exports = function(grunt) {
                 }
 
                 // success
-                var image    = new Buffer(res.image, 'base64'),
-                    filepath = _this.files[0].dest,
-                    filename = path.basename(file);
+                var image = new Buffer(res.image, 'base64');
 
-                grunt.file.mkdir(filepath);
-
-                fs.writeFile(filepath + '/' + filename, image, function () {
-                    grunt.log.writeln(file + ':  saved ' + res.saving + '%');
+                fs.writeFile(file.dest, image, function () {
+                    grunt.log.writeln(file.src + ': ' + chalk.cyan('saved ' + res.saving + '%'));
                     isDone(file);
                 });
             });
