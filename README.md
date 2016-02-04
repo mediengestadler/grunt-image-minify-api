@@ -12,11 +12,11 @@ minifier: {
         api_key: 'YOUR_API_KEY',
         api_host: 'YOUR_API_HOST'
     },
-    eaxample1: {
-        src: ['src/images/*.png', 'src/images/test/*.{jpg|png}'],
+    example1: {
+        src: ['src/images/*.png', 'src/images/test/*.{jpg,png}'],
         dest: 'build/images'
     },
-    eaxample2: {
+    example2: {
         expand: true,
         cwd: 'images/foo/',
         src: ['bar/*.jpg', 'bar/**/*.jpg'],
