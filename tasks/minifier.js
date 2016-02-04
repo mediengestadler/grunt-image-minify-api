@@ -2,6 +2,7 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('minifier', 'Minifiy images', function() {
         var chalk = require('chalk'),
             request = require('request'),
+            path = require('path'),
             fs = require('fs'),
             done = this.async(),
             _this = this,
@@ -22,7 +23,7 @@ module.exports = function(grunt) {
         }
 
         var isDone = function (file) {
-                counter++;
+                current++;
 
                 if (max === current) {
                     done();
@@ -79,6 +80,8 @@ module.exports = function(grunt) {
 
                 // success
                 var image = new Buffer(res.image, 'base64');
+
+                grunt.file.mkdir(path.dirname(file.dest));
 
                 fs.writeFile(file.dest, image, function () {
                     grunt.log.writeln(file.src + ': ' + chalk.cyan('saved ' + res.saving + '%'));
