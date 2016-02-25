@@ -60,7 +60,7 @@ module.exports = function(grunt) {
                 }
 
                 // fail
-                if (res.success === false) {
+                if (res.success && res.success === false) {
                     if (res.code === 403) {
                         // api key not valid
                         return grunt.log.writeln(res.message);
