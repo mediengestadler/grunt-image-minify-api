@@ -113,7 +113,7 @@ module.exports = function(grunt) {
                             isDone(file);
                         });
                     } else {
-                        grunt.log.writeln(file + ': ' + chalk.red('Fehler in Datei: ' + file + '(' + res.message +')'));
+                        grunt.log.writeln(file + ': ' + chalk.red('Fehler ' + res.code + ': ' + res.message));
                     }
                 });
             });
