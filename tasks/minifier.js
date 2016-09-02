@@ -103,14 +103,18 @@ module.exports = function(grunt) {
                     }
 
                     // success
-                    var image = new Buffer(res.image, 'base64');
+                    if (res.image !== undefined) {
+                        var image = new Buffer(res.image, 'base64');
 
-                    grunt.file.mkdir(path.dirname(dest));
+                        grunt.file.mkdir(path.dirname(dest));
 
-                    fs.writeFile(dest, image, function () {
-                        grunt.log.writeln(file + ': ' + chalk.cyan('saved ' + res.saving + '%'));
-                        isDone(file);
-                    });
+                        fs.writeFile(dest, image, function () {
+                            grunt.log.writeln(file + ': ' + chalk.cyan('saved ' + res.saving + '%'));
+                            isDone(file);
+                        });
+                    } else {
+                        grunt.log.writeln(file + ': ' + chalk.red('Fehler in Datei: ' + file + '(' + res.message +')'));
+                    }
                 });
             });
         });
