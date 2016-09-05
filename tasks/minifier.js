@@ -114,6 +114,7 @@ module.exports = function(grunt) {
                         });
                     } else {
                         grunt.log.writeln(file + ': ' + chalk.red('Fehler ' + res.code + ': ' + res.message));
+                        isDone(file);
                     }
                 });
             });
