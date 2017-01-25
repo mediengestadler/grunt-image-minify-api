@@ -1,0 +1,12 @@
+{
+    "extends": "minds-base/legacy",
+    "globals": {
+        "requirejs": true,
+        "define": true,
+        "Foundation": true,
+        "google": true
+    },
+    "rules": {
+        "no-unused-vars": 1
+    }
+}

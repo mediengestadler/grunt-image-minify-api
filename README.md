@@ -1,4 +1,4 @@
-Image Minifier Grunt Task
+!!!Readme under construction!!!
 ==============
 
 Image Minifier Grunt Task for https://github.com/ingowalther/image-minify-api

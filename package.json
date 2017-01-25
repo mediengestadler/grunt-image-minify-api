@@ -1,6 +1,6 @@
 {
   "name": "grunt-image-minify-api",
-  "description": "Image Minifier Grunt Task for https://github.com/ingowalther/image-minify-api",
+  "description": "JPG, PNG, GIF and SVG images minifier",
   "keywords": [
     "grunt",
     "task",
@@ -8,18 +8,16 @@
     "minfiy",
     "jpg",
     "png",
-    "svg"
+    "svg",
+    "gif"
   ],
   "authors": [
     {
       "name": "Yannic Stadler",
       "email": "ys@mediengestadler.de"
-    }, {
-      "name": "Ingo Walther",
-      "email": "ingowalther@iwebspace.net"
     }
   ],
-  "version": "0.0.1",
+  "version": "1.0.0",
   "licenses": [
     {
       "type": "MIT",
@@ -30,11 +28,18 @@
     "chalk": "^0.5.1",
     "request": "~2.67.0"
   },
+  "devDependencies": {
+    "eslint": "~3.1.0",
+    "eslint-config-minds-base": "https://github.com/Electronic-Minds/minds.eslint-config-minds-base.git",
+    "eslint-plugin-import": "^1.11.0",
+    "grunt": "~1.0.1",
+    "grunt-eslint": "~19.0.0"
+  },
    "engines": {
     "node": "*"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:yannicstadler/grunt-image-minify-api.git"
+    "url": "git@github.com:mediengestadler/grunt-image-minify-api.git"
   }
 }
