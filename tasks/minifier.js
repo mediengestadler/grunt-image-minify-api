@@ -16,15 +16,15 @@ module.exports = function (grunt) {
             this.async   = async;
 
             if (this.options.api_key === '') {
-                return grunt.util.error('Es wurde kein valider API Key angegeben!');
+                return grunt.util.error('Error: Invalid API Key!');
             }
 
             if (this.options.api_host === '') {
-                return grunt.util.error('Es wurde kein valider API Host angegeben!');
+                return grunt.util.error('Error: Invalid API Host!');
             }
 
             if (isNaN(this.options.per_stack)) {
-                return grunt.util.error('Es wurde keine numerische Angabe bei der Stapelverarbeitung gemacht!');
+                return grunt.util.error('Error: Option per_stack is not a valid number!');
             }
 
             const files = this.getFileData();
@@ -163,7 +163,7 @@ module.exports = function (grunt) {
                         return;
                     }
 
-                    grunt.log.writeln(chalk.red(`Bei der Anfrage an den Server ist ein Fehler aufgetreten!`));
+                    grunt.log.writeln(chalk.red(`Error: Server not available!`));
                 });
             });
         }
@@ -178,7 +178,7 @@ module.exports = function (grunt) {
                     fs.writeFile(data.destination, data.image, () => {
                         this.makeMessage(
                             data.file,
-                            chalk.cyan(`${data.saving}% eingespart`)
+                            chalk.cyan(`saved ${data.saving}%`)
                         );
 
                         resolve();
@@ -193,7 +193,7 @@ module.exports = function (grunt) {
 
                 this.makeMessage(
                     data.file,
-                    chalk.red('Originalbild wurde kopiert, da Komprimierung nicht möglich war')
+                    chalk.red('Caution: Original image copied because compression was not possible!')
                 );
             });
         }
@@ -208,13 +208,13 @@ module.exports = function (grunt) {
 
                 switch (data.code) {
                 case '403':
-                    message = 'Es wurde kein valider API Key angegeben!';
+                    message = 'Error: Invalid API Key!';
                     break;
                 case '404':
-                    message = 'Aktion wurde nicht gefunden!';
+                    message = 'Error: Function not found';
                     break;
                 default:
-                    message = 'Originalbild wurde kopiert, da Komprimierung nicht möglich war!';
+                    message = 'Caution: Original image copied because compression was not possible!';
                     break;
                 }
 
@@ -247,7 +247,7 @@ module.exports = function (grunt) {
     /*
      Register Minify Task
     */
-    grunt.registerMultiTask('minifier', 'Minifiy images', function () {
+    grunt.registerMultiTask('minifier', 'Minify images', function () {
         return new Minifier(
             {
                 files: this.files,
