@@ -171,14 +171,19 @@ module.exports = function (grunt) {
         onSuccess (data) {
             return new Promise((resolve) => {
                 if (data.file !== undefined) {
-                    const image = new Buffer(data.file, 'base64');
-
                     grunt.file.mkdir(path.dirname(data.destination));
+
+                    if (this.options.log) {
+                        data.log_id = grunt.util._.uniqueId('img_') + '.txt';
+                        grunt.file.write('log/' + data.log_id, JSON.stringify(data));
+                    }
+
+                    data.image = new Buffer(data.image, 'base64');
 
                     fs.writeFile(data.destination, data.image, () => {
                         this.makeMessage(
                             data.file,
-                            chalk.cyan(`saved ${data.saving}%`)
+                            chalk.cyan(this.options.log ? `logfile: ${data.log_id}; saved ${data.saving}%` : `saved ${data.saving}%`)
                         );
 
                         resolve();
@@ -256,7 +261,8 @@ module.exports = function (grunt) {
             this.options({
                 api_key: '',
                 api_host: '',
-                per_stack: 10
+                per_stack: 10,
+                log: false
             }),
             this.async()
         );
