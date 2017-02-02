@@ -10,7 +10,7 @@ Der API Key muss angegeben werden, damit der Bildkompressionsserver weiß, für 
 ### api_host *
 Der API Host ist die URL, worüber der Bildkompressionsserver aufrufbar ist (Pflichtangabe!)
 
-#### per_stack
+### per_stack
 per_stack legt fest, wieviele Bilder pro Runde gesendet werden sollen. Bei schwachen Servern, sollte hier eine niedrige Anzahl festgelegt werden. Die Zahl muss integer sein. Der Default Wert ist "10" (Optionale Angabe)
 
 ### log
